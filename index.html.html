@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francia — Plan de Mudanza</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f2ed;
+  --bg2:#ede9e2;
+  --bg3:#e5e0d8;
+  --card:#fff;
+  --border:#d8d2c8;
+  --border2:#c8c0b4;
+  --text:#1a1714;
+  --text2:#6b6258;
+  --text3:#9e9088;
+  --blue:#1a3cff;
+  --blue-bg:#eef0ff;
+  --red:#e8192c;
+  --red-bg:#fff0f0;
+  --green:#0a7c4b;
+  --green-bg:#edfaf3;
+  --amber:#c47a00;
+  --amber-bg:#fff8e6;
+  --purple:#6b2fb3;
+  --purple-bg:#f5eeff;
+  --france-b:#002395;
+  --france-r:#ED2939;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Instrument Sans',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* HEADER */
+.header{
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:0 28px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+}
+.logo{display:flex;align-items:center;gap:14px}
+.tricolor{display:flex;height:28px;width:18px;border-radius:3px;overflow:hidden;flex-direction:row;gap:0;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.tricolor span{flex:1}
+.tc1{background:#002395}.tc2{background:#fff;border-left:1px solid #eee;border-right:1px solid #eee}.tc3{background:#ED2939}
+.logo-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.logo-title em{color:var(--france-b);font-style:normal}
+.header-right{display:flex;align-items:center;gap:12px}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.sync-label{font-size:12px;color:var(--text3);font-family:'Syne',sans-serif}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.btn-add-header{
+  background:var(--blue);color:#fff;
+  border:none;border-radius:8px;
+  padding:7px 16px;font-size:13px;font-weight:600;
+  font-family:'Syne',sans-serif;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+  transition:all .15s;
+}
+.btn-add-header:hover{background:#0030e0;transform:translateY(-1px)}
+
+/* PROGRESS HERO */
+.hero{
+  background:var(--france-b);
+  padding:32px 28px 28px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;right:-40px;top:-40px;
+  width:240px;height:240px;border-radius:50%;
+  background:rgba(255,255,255,.04);
+}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative;z-index:1}
+.hero-left{}
+.hero-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px}
+.hero-title{font-family:'Instrument Serif',serif;font-size:32px;color:#fff;line-height:1.15;margin-bottom:20px}
+.hero-title span{color:#a8c4ff}
+.progress-track{background:rgba(255,255,255,.15);border-radius:100px;height:10px;margin-bottom:8px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#a8c4ff,#7effcc);border-radius:100px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.6);font-family:'Syne',sans-serif}
+.progress-pct{color:#fff;font-weight:700}
+.hero-stats{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.hstat{text-align:right}
+.hstat-num{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#fff;line-height:1}
+.hstat-label{font-size:11px;color:rgba(255,255,255,.5);font-family:'Syne',sans-serif}
+.hstat-num.red{color:#ff8a8a}
+.hstat-num.green{color:#7effcc}
+
+/* TABS */
+.tabs-wrap{background:var(--card);border-bottom:1px solid var(--border);padding:0 28px;position:sticky;top:60px;z-index:100;overflow-x:auto}
+.tabs{display:flex;gap:0;white-space:nowrap}
+.tab{
+  padding:14px 18px;font-size:13px;font-weight:500;
+  font-family:'Syne',sans-serif;cursor:pointer;
+  border-bottom:2px solid transparent;
+  color:var(--text2);transition:all .15s;
+  display:flex;align-items:center;gap:7px;
+  flex-shrink:0;
+}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--france-b);border-bottom-color:var(--france-b)}
+.tab-badge{
+  font-size:10px;padding:2px 7px;border-radius:20px;
+  background:var(--bg2);color:var(--text3);
+  font-family:'Instrument Sans',sans-serif;font-weight:600;
+}
+.tab.active .tab-badge{background:var(--blue-bg);color:var(--blue)}
+.tab-badge.urgent{background:var(--red-bg);color:var(--red)}
+.tab-badge.done{background:var(--green-bg);color:var(--green)}
+
+/* MAIN LAYOUT */
+.main{max-width:900px;margin:0 auto;padding:24px 28px}
+.section{display:none}
+.section.active{display:block}
+
+/* SECTION HEAD */
+.sec-head{margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.sec-title-wrap{}
+.sec-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px}
+.sec-desc{font-size:13px;color:var(--text2)}
+.btn-add-section{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:8px;padding:8px 14px;
+  font-size:12px;font-weight:600;font-family:'Syne',sans-serif;
+  cursor:pointer;color:var(--text2);white-space:nowrap;
+  display:flex;align-items:center;gap:6px;transition:all .15s;flex-shrink:0;
+}
+.btn-add-section:hover{background:var(--bg3);color:var(--text)}
+
+/* ALERT CARDS */
+.alert{border-radius:12px;padding:14px 18px;margin-bottom:16px;border:1px solid}
+.alert.warn{background:var(--red-bg);border-color:rgba(232,25,44,.2)}
+.alert.tip{background:var(--green-bg);border-color:rgba(10,124,75,.2)}
+.alert.info{background:var(--blue-bg);border-color:rgba(26,60,255,.2)}
+.alert-title{font-size:12px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.alert.warn .alert-title{color:var(--red)}
+.alert.tip .alert-title{color:var(--green)}
+.alert.info .alert-title{color:var(--blue)}
+.alert-body{font-size:13px;color:var(--text2);line-height:1.65}
+.alert-body strong{color:var(--text)}
+.alert-body ul{padding-left:16px}.alert-body li{margin-bottom:3px}
+
+/* TASK GROUPS */
+.group{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:14px;overflow:hidden}
+.group-head{
+  padding:12px 18px;background:var(--bg);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.group-icon{font-size:16px}
+.group-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;flex:1;color:var(--text)}
+.group-prog{font-size:11px;color:var(--text3);font-family:'Syne',sans-serif}
+
+/* TASK ITEMS */
+.task{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 18px;cursor:pointer;
+  border-left:3px solid transparent;
+  transition:background .1s;
+  position:relative;
+}
+.task:not(:last-child){border-bottom:1px solid var(--bg2)}
+.task:hover{background:var(--bg)}
+.task.done{opacity:.55;border-left-color:var(--green)}
+.task.urgent{border-left-color:var(--red)}
+.task.important{border-left-color:var(--amber)}
+.task.custom-task{border-left-color:var(--purple)}
+
+.check{
+  width:19px;height:19px;border-radius:5px;
+  border:2px solid var(--border2);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:2px;transition:all .15s;font-size:11px;
+  background:var(--card);
+}
+.task.done .check{background:var(--green);border-color:var(--green);color:#fff}
+.task.urgent .check{border-color:var(--red)}
+.task.important .check{border-color:var(--amber)}
+.task.custom-task .check{border-color:var(--purple)}
+
+.task-body{flex:1;min-width:0}
+.task-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.task.done .task-name{text-decoration:line-through;color:var(--text3)}
+.task-detail{font-size:12px;color:var(--text2);line-height:1.55}
+.task-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.tag{font-size:10px;font-family:'Syne',sans-serif;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--border)}
+.tag.t{background:var(--amber-bg);color:var(--amber);border-color:rgba(196,122,0,.2)}
+.tag.c{background:var(--green-bg);color:var(--green);border-color:rgba(10,124,75,.2)}
+.tag.l{background:var(--blue-bg);color:var(--blue);border-color:rgba(26,60,255,.2)}
+.tag.d{background:var(--purple-bg);color:var(--purple);border-color:rgba(107,47,179,.2)}
+.tag.custom{background:var(--purple-bg);color:var(--purple);border-color:rgba(107,47,179,.2)}
+
+.task-delete{
+  opacity:0;position:absolute;right:14px;top:14px;
+  background:none;border:none;cursor:pointer;
+  font-size:14px;color:var(--text3);transition:opacity .15s;
+  padding:2px 6px;border-radius:4px;
+}
+.task:hover .task-delete{opacity:1}
+.task-delete:hover{background:var(--red-bg);color:var(--red)}
+
+/* WHO BADGE */
+.who-badge{
+  font-size:10px;font-family:'Syne',sans-serif;font-weight:700;
+  padding:2px 8px;border-radius:20px;margin-top:5px;display:inline-block;
+}
+.who-badge.papa{background:#fff3e0;color:#e65100;border:1px solid rgba(230,81,0,.2)}
+.who-badge.hija{background:#fce4ec;color:#c2185b;border:1px solid rgba(194,24,91,.2)}
+.who-badge.ambos{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(26,60,255,.2)}
+
+/* TIMELINE */
+.tl{padding-left:18px;position:relative}
+.tl::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;padding:0 0 24px 26px}
+.tl-item::before{
+  content:'';position:absolute;left:-9px;top:5px;
+  width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--border);background:var(--bg);
+}
+.tl-item.cr::before{border-color:var(--red);background:var(--red-bg)}
+.tl-item.im::before{border-color:var(--amber);background:var(--amber-bg)}
+.tl-item.pl::before{border-color:var(--blue);background:var(--blue-bg)}
+.tl-time{font-size:11px;font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:3px}
+.tl-title{font-size:14px;font-weight:600;color:var(--text);font-family:'Syne',sans-serif;margin-bottom:4px}
+.tl-desc{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* BUDGET */
+.budget-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px}
+.budget-table{width:100%;border-collapse:collapse}
+.budget-table th{
+  text-align:left;font-family:'Syne',sans-serif;font-size:10px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--text3);padding:10px 16px;
+  background:var(--bg);border-bottom:1px solid var(--border);
+}
+.budget-table td{padding:12px 16px;font-size:13px;border-bottom:1px solid var(--bg2);vertical-align:top}
+.budget-table tr:last-child td{border-bottom:none}
+.budget-table td:last-child{text-align:right;font-family:'Syne',sans-serif;font-weight:600}
+.amt-low{color:var(--green)}.amt-high{color:var(--amber)}.amt-total{color:var(--france-b);font-size:15px}
+.total-row td{border-top:2px solid var(--border);background:var(--bg)}
+
+/* LINKS */
+.links-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.link-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:14px 16px;
+  text-decoration:none;color:var(--text);
+  transition:all .15s;display:flex;align-items:flex-start;gap:12px;
+}
+.link-card:hover{border-color:var(--france-b);background:var(--blue-bg);transform:translateY(-1px)}
+.lk-icon{font-size:22px}
+.lk-name{font-size:13px;font-weight:600;font-family:'Syne',sans-serif;color:var(--text)}
+.lk-url{font-size:11px;color:var(--text3);margin-top:1px}
+.lk-desc{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.5}
+
+/* NOTES */
+.notes-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.notes-wrap textarea{
+  width:100%;background:transparent;border:none;
+  color:var(--text);font-family:'Instrument Sans',sans-serif;
+  font-size:14px;resize:none;outline:none;
+  min-height:200px;line-height:1.75;
+}
+.notes-wrap textarea::placeholder{color:var(--text3)}
+.notes-meta{font-size:11px;color:var(--text3);font-family:'Syne',sans-serif;margin-top:8px}
+
+/* MODAL */
+.modal-bg{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(4px);
+  z-index:500;align-items:center;justify-content:center;padding:20px;
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:var(--card);border-radius:18px;padding:28px;
+  width:100%;max-width:480px;
+  box-shadow:0 24px 80px rgba(0,0,0,.2);
+  animation:slideUp .2s ease;
+}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:20px;color:var(--text)}
+.modal-title span{color:var(--france-b)}
+.form-group{margin-bottom:16px}
+.form-label{font-size:12px;font-weight:700;font-family:'Syne',sans-serif;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
+.form-input, .form-select, .form-textarea{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  border-radius:9px;padding:10px 14px;font-size:14px;
+  font-family:'Instrument Sans',sans-serif;color:var(--text);
+  outline:none;transition:border .15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus{border-color:var(--france-b)}
+.form-textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-actions{display:flex;gap:10px;margin-top:22px}
+.btn-primary{
+  flex:1;background:var(--france-b);color:#fff;border:none;
+  border-radius:9px;padding:12px;font-size:14px;font-weight:600;
+  font-family:'Syne',sans-serif;cursor:pointer;transition:all .15s;
+}
+.btn-primary:hover{background:#0030e0}
+.btn-secondary{
+  background:var(--bg2);border:1px solid var(--border);color:var(--text2);
+  border-radius:9px;padding:12px 20px;font-size:14px;font-weight:600;
+  font-family:'Syne',sans-serif;cursor:pointer;transition:all .15s;
+}
+.btn-secondary:hover{background:var(--bg3)}
+
+/* COLLABORATORS BANNER */
+.collab-banner{
+  background:var(--green-bg);border:1px solid rgba(10,124,75,.2);
+  border-radius:10px;padding:10px 16px;
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;font-size:13px;color:var(--green);
+  font-family:'Syne',sans-serif;font-weight:500;
+}
+
+/* SECTION LABEL */
+.section-label{
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--text3);
+  margin:20px 0 10px;
+}
+
+/* EMPTY STATE */
+.empty-custom{
+  text-align:center;padding:32px;color:var(--text3);
+  font-size:13px;font-family:'Syne',sans-serif;
+}
+.empty-custom .empty-icon{font-size:32px;margin-bottom:8px}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .main{padding:16px}
+  .header{padding:0 16px}
+  .hero{padding:24px 16px}
+  .tabs-wrap{padding:0 16px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:row;align-items:center}
+  .links-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="tricolor"><span class="tc1"></span><span class="tc2"></span><span class="tc3"></span></div>
+    <span class="logo-title">Plan <em>Francia</em> — Papá & Hija</span>
+  </div>
+  <div class="header-right">
+    <span class="sync-dot"></span>
+    <span class="sync-label" id="syncLabel">Sincronizado</span>
+    <button class="btn-add-header" onclick="openModal()">＋ Nueva tarea</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Colombia → Francia · Proceso de refugio</div>
+      <div class="hero-title">Bienvenidos a su<br><span>nuevo comienzo</span> 🇫🇷</div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+      <div class="progress-meta"><span>Progreso total</span><span class="progress-pct" id="progressPct">0% completado</span></div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num red" id="urgentN">0</div><div class="hstat-label">urgentes</div></div>
+      <div class="hstat"><div class="hstat-num green" id="doneN">0</div><div class="hstat-label">hechas</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('refugio',this)">🛡️ Refugio <span class="tab-badge urgent" id="tb-refugio">7</span></div>
+    <div class="tab" onclick="showTab('documentos',this)">📋 Documentos <span class="tab-badge urgent" id="tb-documentos">8</span></div>
+    <div class="tab" onclick="showTab('familia',this)">👨‍👧 Padre &amp; Hija <span class="tab-badge urgent" id="tb-familia">5</span></div>
+    <div class="tab" onclick="showTab('viaje',this)">✈️ Viaje <span class="tab-badge" id="tb-viaje">6</span></div>
+    <div class="tab" onclick="showTab('llegada',this)">🏠 Al llegar <span class="tab-badge" id="tb-llegada">8</span></div>
+    <div class="tab" onclick="showTab('finanzas',this)">💶 Finanzas <span class="tab-badge" id="tb-finanzas">3</span></div>
+    <div class="tab" onclick="showTab('salud',this)">🏥 Salud <span class="tab-badge" id="tb-salud">5</span></div>
+    <div class="tab" onclick="showTab('mis-tareas',this)">⭐ Mis tareas <span class="tab-badge" id="tb-mis-tareas">0</span></div>
+    <div class="tab" onclick="showTab('cronograma',this)">🗓️ Cronograma</div>
+    <div class="tab" onclick="showTab('links',this)">🔗 Links</div>
+    <div class="tab" onclick="showTab('notas',this)">📝 Notas</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- REFUGIO -->
+<div id="sec-refugio" class="section active">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">🛡️ Solicitud de Refugio</div>
+      <div class="sec-desc">Proceso OFPRA — lo más importante de todo el plan.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('refugio')">＋ Agregar tarea</button>
+  </div>
+  <div class="alert warn"><div class="alert-title">⚠️ Regla de los 90 días</div><div class="alert-body">Al llegar a Francia tienes <strong>máximo 90 días</strong> para registrarte y solicitar asilo. Evita pasar por otro país Schengen antes — por el Reglamento de Dublín III podrían remitirte de vuelta. Intenta volar directo a París.</div></div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">🇨🇴</span><span class="group-name">Antes de salir de Colombia</span><span class="group-prog" id="gp-r1"></span></div>
+    <div class="task urgent" data-id="r1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Consultar con abogado de refugio o ACNUR Colombia</div><div class="task-detail">ACNUR tiene oficina en Bogotá. Orienta sobre tu caso antes de salir y qué documentar.</div><div class="task-tags"><span class="tag l">ACNUR Bogotá</span><span class="tag t">Lo antes posible</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="r2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Documentar las razones de la solicitud de refugio</div><div class="task-detail">Capturas de pantalla, amenazas escritas, denuncias ante la Fiscalía, declaraciones de testigos, noticias relevantes. Todo suma para OFPRA.</div><div class="task-tags"><span class="tag d">Evidencias</span><span class="tag d">Denuncias</span><span class="tag d">Declaraciones</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="r3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Redactar narrativa cronológica del caso</div><div class="task-detail">Escribe en español: qué pasó, cuándo, por qué no puedes quedarte, qué riesgos corres. OFPRA leerá y evaluará esto en la entrevista.</div><div class="task-tags"><span class="tag t">Antes de viajar</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="r4" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Contactar organizaciones de apoyo en Francia</div><div class="task-detail">France Terre d'Asile, La Cimade, Forum Réfugiés. Pueden asignarte abogado gratuito desde antes de llegar.</div><div class="task-tags"><span class="tag l">France Terre d'Asile</span><span class="tag l">La Cimade</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">🇫🇷</span><span class="group-name">Al llegar a Francia</span><span class="group-prog" id="gp-r2"></span></div>
+    <div class="task urgent" data-id="r5" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Ir a la SPADA (primer acogida) o Prefecture</div><div class="task-detail">Primer paso oficial. Te dan cita formal. En París: Préfecture de Police, Île de la Cité. Lleva todos tus documentos.</div><div class="task-tags"><span class="tag t">Primeros 3 días</span><span class="tag l">Préfecture</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="r6" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Registrar solicitud formal ante OFPRA</div><div class="task-detail">Recibirás la "attestation de demande d'asile" — documento que te protege legalmente mientras dura el proceso (meses o años).</div><div class="task-tags"><span class="tag t">Primeros 90 días</span><span class="tag l">OFPRA</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="r7" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Solicitar alojamiento CADA y ayuda ADA</div><div class="task-detail">Los solicitantes de asilo tienen derecho a alojamiento temporal (CADA) y ayuda económica ADA (~€6.80/día + complemento familiar).</div><div class="task-tags"><span class="tag c">ADA ~€200/mes</span><span class="tag l">CADA</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div id="custom-refugio"></div>
+</div>
+
+<!-- DOCUMENTOS -->
+<div id="sec-documentos" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">📋 Documentos Colombia</div>
+      <div class="sec-desc">Tramitar, apostillar y digitalizar antes de salir.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('documentos')">＋ Agregar tarea</button>
+  </div>
+  <div class="alert warn"><div class="alert-title">⚠️ Apostilla de La Haya</div><div class="alert-body">Francia requiere documentos apostillados. Se tramita en la <strong>Cancillería de Colombia</strong>. Tiempo: 3–10 días hábiles. Costo: ~$26.000 COP por documento. Pide siempre <strong>2 copias extras</strong> de cada uno.</div></div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">🪪</span><span class="group-name">Identidad y legales</span></div>
+    <div class="task urgent" data-id="d1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Pasaportes vigentes (papá e hija) — mín. 6 meses de vigencia</div><div class="task-detail">Si vence antes de la fecha de viaje + 6 meses, renuévalo YA. Cancillería tarda 3–15 días hábiles.</div><div class="task-tags"><span class="tag t">Urgente</span><span class="tag c">~$165.000 COP c/u</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="d2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Registro civil de nacimiento de la hija (apostillado)</div><div class="task-detail">Fundamental para demostrar vínculo parental ante OFPRA y servicios sociales.</div><div class="task-tags"><span class="tag d">Apostilla</span><span class="tag d">Original + 2 copias</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="d3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Autorización notariada de viaje con menor (si aplica)</div><div class="task-detail">Si la madre no viaja, necesitas autorización notariada apostillada. Sin esto, migración puede retenerte. Si tienes custodia exclusiva, lleva la sentencia judicial apostillada.</div><div class="task-tags"><span class="tag t">🚨 CRÍTICO</span><span class="tag d">Notariado + Apostilla</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="d4" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Cédula y registro civil de nacimiento del papá (apostillados)</div><div class="task-detail">Para confirmar identidad ante OFPRA y autoridades francesas.</div><div class="task-tags"><span class="tag d">Apostilla</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">🎓</span><span class="group-name">Educación y salud</span></div>
+    <div class="task" data-id="d5" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Certificados escolares de la hija</div><div class="task-detail">Boletines, grado cursado, constancia de estudios. Para inscribirse en escuela francesa (obligatorio por ley).</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="d6" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Carnet de vacunas de los dos</div><div class="task-detail">Francia exige DTP, polio, sarampión, hepatitis B para escolarización. Lleva originales y copia.</div><div class="task-tags"><span class="tag d">Original + copia</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="d7" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Historial médico y recetas (condiciones crónicas o medicamentos)</div><div class="task-detail">Especialmente si alguno toma medicamentos de manera regular.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="d8" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Títulos académicos o profesionales del papá (apostillados)</div><div class="task-detail">Para futura homologación y para fortalecer el perfil ante OFPRA.</div><div class="task-tags"><span class="tag d">Apostilla</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div class="alert tip"><div class="alert-title">✅ Digitaliza todo en Drive antes de salir</div><div class="alert-body">Escanea o fotografía cada documento apostillado y súbelo a una carpeta compartida en Google Drive. Si pierdes el original en el viaje, la copia digital te ayuda a tramitar duplicados.</div></div>
+  <div id="custom-documentos"></div>
+</div>
+
+<!-- FAMILIA -->
+<div id="sec-familia" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">👨‍👧 Padre e Hija</div>
+      <div class="sec-desc">Consideraciones especiales para viajar con menor de edad.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('familia')">＋ Agregar tarea</button>
+  </div>
+  <div class="alert warn"><div class="alert-title">⚠️ Autorización de viaje — punto crítico</div><div class="alert-body">Si la madre no viaja, la autorización notariada + apostillada es <strong>obligatoria</strong> en migración Colombia. Sin este documento te pueden retener por presunta sustracción de menor. Prioridad máxima.</div></div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">👧</span><span class="group-name">Trámites específicos para la hija</span></div>
+    <div class="task urgent" data-id="f1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Autorización notariada de viaje con menor</div><div class="task-detail">Notaría pública. Incluir: destino Francia, fechas, motivo. Apostillar en Cancillería. Si hay sentencia de custodia exclusiva, llevarla apostillada también.</div><div class="task-tags"><span class="tag t">🚨 URGENTE</span><span class="tag d">Notariado + Apostilla</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="f2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Pasaporte de la hija vigente</div><div class="task-detail">Los menores tienen pasaporte propio. Verificar al menos 6 meses de vigencia tras la fecha de viaje planificada.</div><div class="task-tags"><span class="tag t">Urgente</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="f3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Llevar medicamentos de la hija para 3 meses</div><div class="task-detail">Con receta médica. Algunos medicamentos colombianos no tienen equivalente directo en Francia.</div><div class="task-tags"><span class="tag d">Receta médica</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="f4" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Incluir a la hija en la solicitud de asilo</div><div class="task-detail">Los hijos menores se incluyen automáticamente en la solicitud del padre. Se registran juntos en la Prefecture. Llevar toda la documentación de ella.</div><div class="task-tags"><span class="tag l">Prefecture</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="f5" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Inscribir a la hija en escuela francesa</div><div class="task-detail">Obligatorio por ley. La mairie (alcaldía) del barrio asigna el colegio. Lleva: partida de nacimiento apostillada, carnets de vacunas, comprobante de domicilio.</div><div class="task-tags"><span class="tag l">Mairie local</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div id="custom-familia"></div>
+</div>
+
+<!-- VIAJE -->
+<div id="sec-viaje" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">✈️ Logística del Viaje</div>
+      <div class="sec-desc">Del aeropuerto en Colombia al aeropuerto en Francia.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('viaje')">＋ Agregar tarea</button>
+  </div>
+  <div class="alert info"><div class="alert-title">ℹ️ Colombianos NO necesitan visa Schengen</div><div class="alert-body">Desde 2015, los colombianos entran sin visa al espacio Schengen por hasta 90 días. Entras como turista y una vez dentro solicitas el asilo. No es necesario declarar la intención de asilo en el aeropuerto.</div></div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">🎫</span><span class="group-name">Reservas y preparativos</span></div>
+    <div class="task urgent" data-id="v1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Comprar tiquetes aéreos — vuelo directo a París si es posible</div><div class="task-detail">Evita escalas largas en países Schengen. CDG (Charles de Gaulle) u Orly. Airlines con vuelos BOG→CDG: Air France, Avianca, Iberia con escala Madrid.</div><div class="task-tags"><span class="tag c">~$700–1.500 USD/persona</span><span class="tag t">Con 3–4 sem de anticipación</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="v2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Alojamiento primeros 7–15 días en Francia</div><div class="task-detail">Hotel, Airbnb o contacto de confianza. Necesitas una dirección para registrarte en la Prefecture. France Terre d'Asile puede ayudar con alojamiento de emergencia.</div><div class="task-tags"><span class="tag c">~€40–80/noche</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="v3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Efectivo en euros para los primeros días</div><div class="task-detail">Las tarjetas colombianas cobran comisiones altas o pueden ser bloqueadas. Lleva mínimo €500–800 en efectivo.</div><div class="task-tags"><span class="tag c">€500–800 mínimo</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="v4" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">eSIM europea antes de salir (Airalo o Holafly)</div><div class="task-detail">Para tener datos y WhatsApp desde que aterrizas. Al llegar busca Free Mobile o Lycamobile — las más baratas en Francia.</div><div class="task-tags"><span class="tag c">€10–25</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="v5" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Seguro de viaje para el trayecto</div><div class="task-detail">Una vez solicitado el asilo, Francia da salud pública. Pero para el vuelo y los primeros días, un seguro es indispensable.</div><div class="task-tags"><span class="tag c">~$50–100 USD</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="v6" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Equipaje: documentos en bolso de mano SIEMPRE</div><div class="task-detail">Todos los documentos originales en mano, nunca en maleta de bodega. Backup digital en Google Drive. Ropa de clima frío (5–15°C en Francia buena parte del año).</div><div class="task-tags"><span class="tag d">Docs en mano</span><span class="tag d">Backup en Drive</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div id="custom-viaje"></div>
+</div>
+
+<!-- LLEGADA -->
+<div id="sec-llegada" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">🏠 Al llegar a Francia</div>
+      <div class="sec-desc">Primeros 30–90 días en suelo francés.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('llegada')">＋ Agregar tarea</button>
+  </div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">📍</span><span class="group-name">Trámites prioritarios</span></div>
+    <div class="task urgent" data-id="l1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Registrarse en la Prefecture — solicitar asilo</div><div class="task-detail">Días 3–5. En París: Préfecture de Police. Fuera de París: préfecture departamental. Llevar todos los documentos.</div><div class="task-tags"><span class="tag t">Primeros 5 días</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Abrir cuenta bancaria (Compte Nickel o La Banque Postale)</div><div class="task-detail">Sin domicilio fijo: Compte Nickel en estancos (tabacs). Con attestation: La Banque Postale. Imprescindible para recibir la ADA.</div><div class="task-tags"><span class="tag c">Compte Nickel ~€20/año</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Solicitar ADA en la OFII</div><div class="task-detail">Ayuda económica del Estado mientras dura el proceso. ~€6.80/día base + complemento según situación familiar.</div><div class="task-tags"><span class="tag c">~€200/mes</span><span class="tag l">OFII</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l4" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Registro en CPAM para PUMA (salud gratuita)</div><div class="task-detail">Protección Universal de Salud. Cubre médico, especialistas y hospitalización. Gratuito con la attestation de demande d'asile.</div><div class="task-tags"><span class="tag l">CPAM</span><span class="tag c">Gratuito</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l5" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Buscar alojamiento estable (CADA o privado)</div><div class="task-detail">Los CADA son gratuitos si hay plaza. También: colocation, asociaciones locales, redes de acogida.</div><div class="task-tags"><span class="tag c">CADA gratuito</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l6" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Inscribirse en clases de francés FLE (OFII)</div><div class="task-detail">La OFII asigna clases gratuitas. También hay en Maisons de Quartier y asociaciones. El francés acelera todo el proceso de integración.</div><div class="task-tags"><span class="tag c">Gratuito</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l7" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Buscar abogado gratuito para audiencia OFPRA</div><div class="task-detail">La Cimade, Forum Réfugiés y France Terre d'Asile ofrecen asesoría jurídica gratuita. La entrevista OFPRA es el momento clave — prepárala bien.</div><div class="task-tags"><span class="tag l">La Cimade</span><span class="tag l">Forum Réfugiés</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="l8" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Crear correo dedicado solo a trámites</div><div class="task-detail">Toda comunicación con OFPRA, Prefecture, CPAM será por email o carta. Revísalo diariamente.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div id="custom-llegada"></div>
+</div>
+
+<!-- FINANZAS -->
+<div id="sec-finanzas" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">💶 Finanzas y Presupuesto</div>
+      <div class="sec-desc">Costos del proceso y primeros meses.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('finanzas')">＋ Agregar tarea</button>
+  </div>
+  <div class="budget-card">
+    <table class="budget-table">
+      <thead><tr><th>Concepto</th><th>Cuándo</th><th>Estimado</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pasaportes (2)</strong><br><small style="color:var(--text3)">Cancillería Colombia</small></td><td style="font-size:12px;color:var(--text2)">Ahora</td><td><span class="amt-low">~$330k COP</span></td></tr>
+        <tr><td><strong>Apostillas documentos</strong><br><small style="color:var(--text3)">~8 documentos</small></td><td style="font-size:12px;color:var(--text2)">Ahora</td><td><span class="amt-low">~$200k COP</span></td></tr>
+        <tr><td><strong>Trámites notariales</strong><br><small style="color:var(--text3)">Autorización viaje menor</small></td><td style="font-size:12px;color:var(--text2)">Ahora</td><td><span class="amt-low">~$150k COP</span></td></tr>
+        <tr><td><strong>Tiquetes aéreos (2)</strong><br><small style="color:var(--text3)">BOG → CDG París</small></td><td style="font-size:12px;color:var(--text2)">1–3 meses</td><td><span class="amt-high">~$1.500–2.500 USD</span></td></tr>
+        <tr><td><strong>Alojamiento primeras semanas</strong><br><small style="color:var(--text3)">Hotel / Airbnb</small></td><td style="font-size:12px;color:var(--text2)">Al llegar</td><td><span class="amt-high">~€400–800</span></td></tr>
+        <tr><td><strong>Efectivo de emergencia</strong><br><small style="color:var(--text3)">Comida, transporte, imprevistos</small></td><td style="font-size:12px;color:var(--text2)">Al llegar</td><td><span class="amt-high">€500 mínimo</span></td></tr>
+        <tr><td><strong>Seguro de viaje</strong></td><td style="font-size:12px;color:var(--text2)">Antes del vuelo</td><td><span class="amt-low">~$50–100 USD</span></td></tr>
+        <tr class="total-row"><td><strong>TOTAL ESTIMADO</strong></td><td></td><td><span class="amt-total">~$2.500–3.500 USD</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert tip"><div class="alert-title">✅ Ayudas del Estado francés (una vez dentro)</div><div class="alert-body"><ul><li><strong>ADA:</strong> ~€200/mes para solicitantes de asilo</li><li><strong>CADA:</strong> Alojamiento gratuito (lista de espera)</li><li><strong>PUMA:</strong> Salud 100% gratuita desde el primer día</li><li><strong>Escuela:</strong> Completamente gratuita para la hija</li><li><strong>Clases de francés:</strong> Gratuitas vía OFII</li></ul></div></div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">🏦</span><span class="group-name">Tareas financieras</span></div>
+    <div class="task" data-id="fin1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Reunir presupuesto mínimo de viaje (~$3.000 USD)</div><div class="task-detail">Entre ahorros, apoyo familiar o venta de bienes. Este es el colchón mínimo para los primeros meses.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="fin2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Abrir cuenta Wise antes de salir</div><div class="task-detail">Para recibir transferencias internacionales sin comisiones. Ideal para tener cuenta en euros desde Colombia.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="fin3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Guardar facturas y recibos de todos los trámites</div><div class="task-detail">Escanear y organizar en Drive. Útil para declarar ante OFPRA y llevar control de gastos.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div id="custom-finanzas"></div>
+</div>
+
+<!-- SALUD -->
+<div id="sec-salud" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">🏥 Salud y Seguros</div>
+      <div class="sec-desc">Para los dos, antes y después de llegar.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('salud')">＋ Agregar tarea</button>
+  </div>
+  <div class="group">
+    <div class="group-head"><span class="group-icon">💊</span><span class="group-name">Antes de salir de Colombia</span></div>
+    <div class="task urgent" data-id="s1" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Cita médica general para ambos</div><div class="task-detail">Pide certificados médicos y documenta cualquier condición preexistente. Útil para el asilo y para el sistema de salud francés.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task urgent" data-id="s2" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Actualizar esquema de vacunas (especialmente la hija)</div><div class="task-detail">Francia exige para escolarización: DTP, polio, sarampión, hepatitis B. Verifica y completa lo que falte.</div><div class="task-tags"><span class="tag d">Carnet de vacunas</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="s3" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Stock de medicamentos para 3 meses</div><div class="task-detail">Con prescripción médica. Para medicamentos controlados, llevar autorización especial. Los genéricos franceses tienen otros nombres.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="s4" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Cita odontológica antes de salir</div><div class="task-detail">La odontología en Francia es cara. Resuelve todo lo que puedas antes de partir.</div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+    <div class="task" data-id="s5" onclick="toggleTask(this)"><div class="check"></div><div class="task-body"><div class="task-name">Solicitar PUMA en Francia al llegar</div><div class="task-detail">Protección Universal Médica para solicitantes de asilo. Cubre médico, especialistas, hospitalización. Llevar attestation de demande d'asile.</div><div class="task-tags"><span class="tag c">Gratuito</span><span class="tag l">CPAM</span></div></div><button class="task-delete" onclick="event.stopPropagation()">🗑️</button></div>
+  </div>
+  <div id="custom-salud"></div>
+</div>
+
+<!-- MIS TAREAS -->
+<div id="sec-mis-tareas" class="section">
+  <div class="sec-head">
+    <div class="sec-title-wrap">
+      <div class="sec-title">⭐ Mis tareas personalizadas</div>
+      <div class="sec-desc">Todas las tareas que han agregado papá e hija.</div>
+    </div>
+    <button class="btn-add-section" onclick="openModal('mis-tareas')">＋ Agregar tarea</button>
+  </div>
+  <div id="all-custom-tasks">
+    <div class="empty-custom" id="empty-custom">
+      <div class="empty-icon">✨</div>
+      <div>Aún no hay tareas personalizadas.</div>
+      <div style="margin-top:6px;font-size:12px">Usa el botón <strong>＋ Nueva tarea</strong> para agregar lo que se les ocurra.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CRONOGRAMA -->
+<div id="sec-cronograma" class="section">
+  <div class="sec-head"><div class="sec-title-wrap"><div class="sec-title">🗓️ Cronograma de 90 días</div><div class="sec-desc">Secuencia óptima para no perder tiempos críticos.</div></div></div>
+  <div class="tl">
+    <div class="tl-item cr"><div class="tl-time">Semana 1–2 — Colombia</div><div class="tl-title">🔴 Trámites urgentes de documentos</div><div class="tl-desc">Renovar pasaportes si aplican · Tramitar autorización notarial de viaje con la hija · Iniciar apostillas en Cancillería · Consultar ACNUR o abogado de refugio · Recopilar evidencias del caso</div></div>
+    <div class="tl-item cr"><div class="tl-time">Semana 2–4 — Colombia</div><div class="tl-title">🔴 Documentación y narrativa</div><div class="tl-desc">Redactar historia cronológica del caso de refugio · Recoger certificados escolares y carnets de vacunas · Actualizar vacunas · Citas médicas y odontológicas · Reunir presupuesto de viaje · Comprar tiquetes</div></div>
+    <div class="tl-item im"><div class="tl-time">Semana 4–6 — Colombia</div><div class="tl-title">🟡 Logística final</div><div class="tl-desc">Digitalizar TODOS los documentos en Drive · Contactar organizaciones en Francia · Abrir Wise · Conseguir eSIM europea · Resolver asuntos pendientes en Colombia</div></div>
+    <div class="tl-item cr"><div class="tl-time">Día 0–3 — Francia 🇫🇷</div><div class="tl-title">🔴 Llegada y orientación</div><div class="tl-desc">Alojamiento primeros días · Comprar SIM local · Localizar la SPADA/Prefecture más cercana · Contactar France Terre d'Asile</div></div>
+    <div class="tl-item cr"><div class="tl-time">Día 3–10 — Francia</div><div class="tl-title">🔴 Registrarse como solicitante de asilo</div><div class="tl-desc">Ir a la SPADA · Cita en Prefecture · Entregar solicitud OFPRA · Recibir attestation de demande d'asile</div></div>
+    <div class="tl-item im"><div class="tl-time">Semana 2–4 en Francia</div><div class="tl-title">🟡 Estabilización</div><div class="tl-desc">Solicitar ADA (ayuda económica) · Registrar a la hija en escuela · Abrir cuenta bancaria · Inscribirse en francés · Solicitar PUMA</div></div>
+    <div class="tl-item pl"><div class="tl-time">Mes 1–3 en Francia</div><div class="tl-title">🔵 Preparar audiencia OFPRA</div><div class="tl-desc">Conseguir abogado gratuito (La Cimade / Forum Réfugiés) · Perfeccionar narrativa · Traducir documentos al francés · Esperar convocatoria</div></div>
+    <div class="tl-item pl"><div class="tl-time">Mes 3–12+ en Francia</div><div class="tl-title">🔵 Resolución y vida en Francia</div><div class="tl-desc">Entrevista OFPRA · Si rechazo → recurso ante CNDA · Si aprobación → permiso de residencia 4 años renovable · Buscar trabajo / homologar títulos · Integración</div></div>
+  </div>
+</div>
+
+<!-- LINKS -->
+<div id="sec-links" class="section">
+  <div class="sec-head"><div class="sec-title-wrap"><div class="sec-title">🔗 Links y Recursos</div><div class="sec-desc">Sitios oficiales y organizaciones. Guárdalos en favoritos.</div></div></div>
+  <div class="section-label">🏛️ Instituciones oficiales Francia</div>
+  <div class="links-grid" style="margin-bottom:20px">
+    <a href="https://www.ofpra.gouv.fr" target="_blank" class="link-card"><span class="lk-icon">🛡️</span><div><div class="lk-name">OFPRA</div><div class="lk-url">ofpra.gouv.fr</div><div class="lk-desc">Oficina francesa de refugiados. Aquí se tramita el asilo formalmente.</div></div></a>
+    <a href="https://www.ofii.fr" target="_blank" class="link-card"><span class="lk-icon">📋</span><div><div class="lk-name">OFII</div><div class="lk-url">ofii.fr</div><div class="lk-desc">ADA (ayuda económica) y clases de francés gratuitas vía Estado.</div></div></a>
+    <a href="https://www.ameli.fr" target="_blank" class="link-card"><span class="lk-icon">🏥</span><div><div class="lk-name">Ameli / CPAM</div><div class="lk-url">ameli.fr</div><div class="lk-desc">Seguridad social y PUMA (salud gratuita para solicitantes de asilo).</div></div></a>
+    <a href="https://www.immigration.interieur.gouv.fr" target="_blank" class="link-card"><span class="lk-icon">🏛️</span><div><div class="lk-name">Ministère Intérieur</div><div class="lk-url">immigration.interieur.gouv.fr</div><div class="lk-desc">Info oficial sobre asilo e inmigración en Francia.</div></div></a>
+  </div>
+  <div class="section-label">🤝 Organizaciones de apoyo gratuitas</div>
+  <div class="links-grid" style="margin-bottom:20px">
+    <a href="https://www.france-terre-asile.org" target="_blank" class="link-card"><span class="lk-icon">🏠</span><div><div class="lk-name">France Terre d'Asile</div><div class="lk-url">france-terre-asile.org</div><div class="lk-desc">Apoyo integral: alojamiento, asesoría legal, orientación. Primer contacto recomendado.</div></div></a>
+    <a href="https://www.lacimade.org" target="_blank" class="link-card"><span class="lk-icon">⚖️</span><div><div class="lk-name">La Cimade</div><div class="lk-url">lacimade.org</div><div class="lk-desc">Asesoría jurídica gratuita para refugiados y migrantes en toda Francia.</div></div></a>
+    <a href="https://www.forumrefugies.org" target="_blank" class="link-card"><span class="lk-icon">🤲</span><div><div class="lk-name">Forum Réfugiés</div><div class="lk-url">forumrefugies.org</div><div class="lk-desc">Apoyo legal, CADA y acompañamiento durante todo el proceso OFPRA.</div></div></a>
+    <a href="https://www.unhcr.org/fr-fr" target="_blank" class="link-card"><span class="lk-icon">🌍</span><div><div class="lk-name">ACNUR Francia</div><div class="lk-url">unhcr.org/fr-fr</div><div class="lk-desc">Alto Comisionado ONU para Refugiados. Orientación y monitoreo del proceso.</div></div></a>
+  </div>
+  <div class="section-label">🇨🇴 Trámites en Colombia</div>
+  <div class="links-grid">
+    <a href="https://www.cancilleria.gov.co" target="_blank" class="link-card"><span class="lk-icon">🪪</span><div><div class="lk-name">Cancillería Colombia</div><div class="lk-url">cancilleria.gov.co</div><div class="lk-desc">Pasaportes colombianos y servicio de apostillas.</div></div></a>
+    <a href="https://www.acnur.org/colombia" target="_blank" class="link-card"><span class="lk-icon">🛡️</span><div><div class="lk-name">ACNUR Colombia</div><div class="lk-url">acnur.org/colombia</div><div class="lk-desc">Orientación antes de salir del país. Oficina en Bogotá.</div></div></a>
+  </div>
+</div>
+
+<!-- NOTAS -->
+<div id="sec-notas" class="section">
+  <div class="sec-head"><div class="sec-title-wrap"><div class="sec-title">📝 Notas compartidas</div><div class="sec-desc">Contactos, citas, pendientes personales. Visibles para los dos.</div></div></div>
+  <div class="collab-banner">👥 Estas notas son compartidas — tanto papá como hija pueden leerlas y editarlas.</div>
+  <div class="notes-wrap">
+    <textarea id="notesField" placeholder="Escribe aquí: contactos importantes, fechas de citas, preguntas para el abogado, pendientes, ideas..."></textarea>
+  </div>
+  <div class="notes-meta" id="notesMeta">💾 Las notas se guardan automáticamente.</div>
+</div>
+
+</div><!-- /main -->
+
+<!-- MODAL AGREGAR TAREA -->
+<div class="modal-bg" id="modalBg" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-title">＋ Nueva tarea <span id="modalSectionLabel"></span></div>
+    <div class="form-group">
+      <label class="form-label">Nombre de la tarea *</label>
+      <input class="form-input" id="taskName" placeholder="Ej: Llamar al consulado francés" maxlength="120">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Detalle o nota</label>
+      <textarea class="form-textarea" id="taskDetail" placeholder="Instrucciones, links, direcciones..." rows="3"></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Prioridad</label>
+        <select class="form-select" id="taskPriority">
+          <option value="">Normal</option>
+          <option value="urgent">🔴 Urgente</option>
+          <option value="important">🟡 Importante</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">¿Quién lo hace?</label>
+        <select class="form-select" id="taskWho">
+          <option value="ambos">👥 Los dos</option>
+          <option value="papa">👨 Papá</option>
+          <option value="hija">👧 Hija</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Categoría</label>
+      <select class="form-select" id="taskSection">
+        <option value="mis-tareas">⭐ Mis tareas</option>
+        <option value="refugio">🛡️ Refugio</option>
+        <option value="documentos">📋 Documentos</option>
+        <option value="familia">👨‍👧 Padre & Hija</option>
+        <option value="viaje">✈️ Viaje</option>
+        <option value="llegada">🏠 Al llegar</option>
+        <option value="finanzas">💶 Finanzas</option>
+        <option value="salud">🏥 Salud</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+      <button class="btn-primary" onclick="saveTask()">Guardar tarea</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'plan_francia_v3';
+let state = { done:{}, customTasks:[], notes:'' };
+
+// LOAD / SAVE
+function loadState(){
+  try{ const s=localStorage.getItem(STORAGE_KEY); if(s) state=JSON.parse(s); }catch(e){}
+}
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    document.getElementById('syncLabel').textContent='Guardado '+new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'});
+  }catch(e){}
+}
+
+// TABS
+function showTab(id, el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// TOGGLE TASK
+function toggleTask(el){
+  const id=el.getAttribute('data-id');
+  if(!id) return;
+  const isDone=el.classList.toggle('done');
+  el.querySelector('.check').textContent=isDone?'✓':'';
+  state.done[id]=isDone;
+  if(!isDone) delete state.done[id];
+  saveState();
+  updateStats();
+}
+
+// RESTORE STATES
+function restoreStates(){
+  document.querySelectorAll('.task[data-id]').forEach(el=>{
+    const id=el.getAttribute('data-id');
+    if(state.done[id]){
+      el.classList.add('done');
+      el.querySelector('.check').textContent='✓';
+    }
+  });
+}
+
+// STATS
+function updateStats(){
+  const all=document.querySelectorAll('.task[data-id]');
+  const doneN=Object.keys(state.done).filter(k=>state.done[k]).length;
+  const urgentPending=document.querySelectorAll('.task.urgent:not(.done)').length;
+  const total=all.length;
+  const pct=total>0?Math.round(doneN/total*100):0;
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=pct+'% completado';
+  document.getElementById('doneN').textContent=doneN;
+  document.getElementById('urgentN').textContent=urgentPending;
+
+  // Tab badges
+  const tabs=['refugio','documentos','familia','viaje','llegada','finanzas','salud','mis-tareas'];
+  tabs.forEach(t=>{
+    const sec=document.getElementById('sec-'+t);
+    if(!sec) return;
+    const secAll=sec.querySelectorAll('.task[data-id]');
+    const secDone=sec.querySelectorAll('.task[data-id].done');
+    const pending=secAll.length-secDone.length;
+    const tb=document.getElementById('tb-'+t);
+    if(!tb) return;
+    tb.textContent=pending;
+    tb.className='tab-badge';
+    if(pending===0) tb.className='tab-badge done';
+    else if(sec.querySelectorAll('.task.urgent:not(.done)').length>0) tb.className='tab-badge urgent';
+  });
+}
+
+// MODAL
+let currentSection='mis-tareas';
+function openModal(sec){
+  currentSection=sec||'mis-tareas';
+  document.getElementById('taskSection').value=currentSection;
+  const names={'refugio':'Refugio','documentos':'Documentos','familia':'Padre & Hija','viaje':'Viaje','llegada':'Al llegar','finanzas':'Finanzas','salud':'Salud','mis-tareas':'Mis tareas'};
+  document.getElementById('modalSectionLabel').textContent='→ '+( names[currentSection]||'');
+  document.getElementById('modalBg').classList.add('open');
+  document.getElementById('taskName').focus();
+}
+function closeModal(){
+  document.getElementById('modalBg').classList.remove('open');
+  document.getElementById('taskName').value='';
+  document.getElementById('taskDetail').value='';
+  document.getElementById('taskPriority').value='';
+  document.getElementById('taskWho').value='ambos';
+}
+function closeModalOutside(e){ if(e.target===document.getElementById('modalBg')) closeModal(); }
+
+function saveTask(){
+  const name=document.getElementById('taskName').value.trim();
+  if(!name) return;
+  const task={
+    id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),
+    name,
+    detail:document.getElementById('taskDetail').value.trim(),
+    priority:document.getElementById('taskPriority').value,
+    who:document.getElementById('taskWho').value,
+    section:document.getElementById('taskSection').value,
+    created:new Date().toLocaleDateString('es-CO')
+  };
+  state.customTasks.push(task);
+  saveState();
+  renderCustomTask(task);
+  updateStats();
+  closeModal();
+}
+
+function renderCustomTask(task){
+  const el=createTaskElement(task);
+  // Add to section
+  const container=document.getElementById('custom-'+task.section)||document.getElementById('all-custom-tasks');
+  if(container) container.appendChild(el);
+  // Also add to mis-tareas
+  if(task.section!=='mis-tareas'){
+    const allContainer=document.getElementById('all-custom-tasks');
+    const clone=createTaskElement(task, true);
+    allContainer.appendChild(clone);
+  }
+  // Hide empty state
+  const empty=document.getElementById('empty-custom');
+  if(empty) empty.style.display='none';
+}
+
+function createTaskElement(task, isClone){
+  const div=document.createElement('div');
+  div.className='task custom-task'+(task.priority?' '+task.priority:'');
+  div.setAttribute('data-id', isClone?task.id+'_clone':task.id);
+  if(state.done[task.id]||state.done[task.id+'_clone']){
+    div.classList.add('done');
+  }
+  const whoLabels={'papa':'👨 Papá','hija':'👧 Hija','ambos':'👥 Los dos'};
+  div.innerHTML=`
+    <div class="check">${(state.done[task.id]||state.done[task.id+'_clone'])?'✓':''}</div>
+    <div class="task-body">
+      <div class="task-name">${task.name}</div>
+      ${task.detail?`<div class="task-detail">${task.detail}</div>`:''}
+      <span class="who-badge ${task.who}">${whoLabels[task.who]||task.who}</span>
+      <div class="task-tags"><span class="tag custom">Personalizada</span><span class="tag" style="color:var(--text3)">${task.created}</span></div>
+    </div>
+    <button class="task-delete" onclick="deleteCustomTask('${task.id}',this.closest('.task'));event.stopPropagation()">🗑️</button>
+  `;
+  div.addEventListener('click', function(){ toggleTask(this); });
+  return div;
+}
+
+function deleteCustomTask(id, el){
+  if(!confirm('¿Eliminar esta tarea?')) return;
+  state.customTasks=state.customTasks.filter(t=>t.id!==id);
+  delete state.done[id];
+  delete state.done[id+'_clone'];
+  // Remove all elements with this id
+  document.querySelectorAll(`[data-id="${id}"], [data-id="${id}_clone"]`).forEach(e=>e.remove());
+  saveState();
+  updateStats();
+  // Show empty if none
+  const allCustom=document.querySelectorAll('#all-custom-tasks .task');
+  if(allCustom.length===0){
+    const empty=document.getElementById('empty-custom');
+    if(empty) empty.style.display='block';
+  }
+}
+
+function loadCustomTasks(){
+  if(!state.customTasks||!state.customTasks.length) return;
+  document.getElementById('empty-custom').style.display='none';
+  state.customTasks.forEach(task=>renderCustomTask(task));
+}
+
+// NOTES
+function loadNotes(){
+  document.getElementById('notesField').value=state.notes||'';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  loadState();
+  restoreStates();
+  loadCustomTasks();
+  loadNotes();
+  updateStats();
+  document.getElementById('notesField').addEventListener('input',function(){
+    state.notes=this.value;
+    saveState();
+  });
+});
+</script>
+</body>
+</html>
